@@ -1,14 +1,10 @@
 name: Render a CV
+# Disabled on push. This workflow is written for RenderCV v2 (the --settings flag,
+# the *.typ output it deletes), but _data/cv.yml is still in the v1/JSON-Resume
+# schema that v2 rejects (label, image, address are unknown fields), so every run
+# fails. Migrate the data file before re-enabling; until then, run this manually
+# from the Actions tab if a CV render is ever needed.
 on:
-  push:
-    branches:
-      - main
-      - master
-    paths:
-      - "_data/cv.yml"
-      - "assets/rendercv/design.yaml"
-      - "assets/rendercv/locale.yaml"
-      - "assets/rendercv/settings.yaml"
   workflow_call:
   workflow_dispatch:
 permissions:
